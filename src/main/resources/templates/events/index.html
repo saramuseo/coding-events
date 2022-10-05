@@ -12,13 +12,25 @@
 
 <table class="table table-striped">
     <thead>
-    <tr>
-        <th>Name</th>
-    </tr>
-
+        <tr>
+            <th>Event Name</th>
+            <th>Event Description</th>
+            <th>Location</th>
+        </tr>
     </thead>
     <tr th:each="event : ${events}">
-        <td th:text="${event}"></td>
+        <td th:text="${event.key}"></td>
+        <td th:text="${event.value}"></td>
+        <th:block th:if='${event.key.equals("Code Til Dawn")}'>
+           <td th:replace="fragments :: address1"></td>
+        </th:block>
+        <th:block th:if='${event.key.equals("XD Throwdown")}'>
+            <td th:replace="fragments :: address2"></td>
+        </th:block>
+        <th:block th:if='${event.key.equals("STLX conference")}'>
+            <td th:replace="fragments :: address3"></td>
+        </th:block>
+
     </tr>
 </table>
 <!--<table>-->
